@@ -96,6 +96,12 @@ describe("Monad", () => {
     });
   });
   describe("go-notation", () => {
+    it("handles monad returned without yield", () => {
+      const single = go(function* (): any {
+        return just(2);
+      });
+      assert.deepEqual(single, just(2));
+     });
     it("handles immediate return", () => {
       const single = go(function* (): any {
         return yield just(12);
